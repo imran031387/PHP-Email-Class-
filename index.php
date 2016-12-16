@@ -30,10 +30,15 @@ $error_delivery_address=$from_address;
 /*
  *  Change these lines or else you will be mailing the class author.
  */
-$to_name = $_POST['name'];
-$to_address = $_POST['email'];
-$to_task_title = $_POST['title'];
-$to_task_description = $_POST['description'];
+//$to_name = $_POST['name'];
+//$to_address = $_POST['email'];
+//$to_task_title = $_POST['title'];
+//$to_task_description = $_POST['description'];
+
+$to_name = 'User';
+$to_address = 'mimran@zaizi.com';
+$to_task_title = 'test title';
+$to_task_description = 'test description';
 
 $subject="SOS Notification From Checklist App";
 $email_message=new email_message_class;
