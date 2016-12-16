@@ -18,7 +18,7 @@ require("email_message.php");
 //$from_address=getenv("USER")."@".getenv("HOSTNAME");
 //$from_name=getenv("USERNAME");
 
-$from_address='mimran@zaizi.cpm';
+$from_address='checklist@caga.com';
 $from_name='Checklist App';
 
 $reply_name=$from_name;
@@ -30,8 +30,10 @@ $error_delivery_address=$from_address;
 /*
  *  Change these lines or else you will be mailing the class author.
  */
-$to_name="Mohammed Imran";
-$to_address="imran031387@gmail.com";
+$to_name = $_POST['name'];
+$to_address = $_POST['email'];
+$to_task_title = $_POST['title'];
+$to_task_description = $_POST['description'];
 
 $subject="SOS Notification From Checklist App";
 $email_message=new email_message_class;
@@ -139,7 +141,20 @@ A:link, A:visited, A:active { text-decoration: underline }
 <hr>
 <P>Hello ".strtok($to_name," ").",<br><br>
 This message is just to let you know that your contact (name) is failed to respond to the local notification.<br><br>
-<center><h2>Please Consider following details to contact:</h2></center>
+<center><h2>Please Consider following details:</h2></center>
+<center>
+<table> 
+<th>Task Deatails</th>
+<tr><td>$to_task_title</td></tr>
+<tr><td>$to_task_description</td></tr>
+</table>
+<br>
+<table> 
+<th>Location Details</th>
+<tr><td>$to_task_title</td></tr>
+<tr><td>$to_task_description</td></tr>
+</table>
+</center>
 <center><img src=\"cid:".$image_content_id."\"></center>".
     /*
      * This example of embedding images in HTML messages is commented out
@@ -148,7 +163,7 @@ This message is just to let you know that your contact (name) is failed to respo
      * <center><h2>Here is an image embedded directly in the HTML:</h2></center>
      * <center><img src=\"".$image_data_url."\"></center>
      */
-    "Thank you,<br>
+    "<br><br>Thank you,<br>
 $from_name</p>
 </td>
 </tr>
