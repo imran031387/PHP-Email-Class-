@@ -160,8 +160,10 @@ This message is just to let you know that your contact (name) is failed to respo
 <br>
 <table> 
 <th>Location Details</th>
+<tr><td>Latitude : $to_task_lat</td></tr>
+<tr><td>Longitude : $to_task_long</td></tr>
 <tr><td>
-<img src='https://maps.googleapis.com/maps/api/staticmap?center=$to_task_lat, $to_task_long&markers=color:blue%7Clabel:S%7C$to_task_lat, $to_task_long&zoom=12&size=400x400&key=AIzaSyBSxVtjLOies98ZJpTmN4QvkJ3PZlkpkHA'>
+<img src='https://maps.googleapis.com/maps/api/staticmap?center=$to_task_lat,$to_task_long&markers=color:blue%7Clabel:S%7C$to_task_lat,$to_task_long&zoom=12&size=400x400&key=AIzaSyBSxVtjLOies98ZJpTmN4QvkJ3PZlkpkHA'>
 </td></tr>
 </table>
 </center>
