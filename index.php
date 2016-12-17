@@ -10,9 +10,6 @@ require("email_message.php");
 
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
-$email = $request->email;
-$pass = $request->password;
-
 
 /*
  *  Change these lines or else you will be mailing the class author.
@@ -21,6 +18,9 @@ $to_name = $request->name;
 $to_address = $request->email;
 $to_task_title = $request->title;
 $to_task_description = $request->description;
+$to_task_lat = $request->lat;
+$to_task_long = $request->long;
+
 
 
 /*
@@ -97,7 +97,7 @@ $image_content_id=$email_message->GetPartContentID($image_part);
  *  Many related file parts may be embedded in the message.
  */
 $image=array(
-    "FileName"=>"http://files.phpclasses.org/graphics/phpclasses/background.jpg",
+    "FileName"=>"http://wallpapercave.com/wp/f2nbsPJ.jpg",
     "Content-Type"=>"automatic/name",
     "Disposition"=>"inline",
     /*
@@ -136,14 +136,14 @@ $background_image_content_id="cid:".$email_message->GetPartContentID($background
  */
 $html_message="<html>
 <head>
-<title>$subject</title>
+<title style=\"color: #dadada\">$subject</title>
 <style type=\"text/css\"><!--
 body { color: black ; font-family: arial, helvetica, sans-serif ; background-color: #A3C5CC }
 A:link, A:visited, A:active { text-decoration: underline }
 --></style>
 </head>
 <body>
-<table background=\"$background_image_content_id\" width=\"100%\">
+<table style=\"color: #dadada\" background=\"$background_image_content_id\" width=\"100%\">
 <tr>
 <td>
 <center><h1>$subject</h1></center>
@@ -160,8 +160,9 @@ This message is just to let you know that your contact (name) is failed to respo
 <br>
 <table> 
 <th>Location Details</th>
-<tr><td>$to_task_title</td></tr>
-<tr><td>$to_task_description</td></tr>
+<tr><td>
+<img src='https://maps.googleapis.com/maps/api/staticmap?center=$to_task_lat, $to_task_long&markers=color:blue%7Clabel:S%7C$to_task_lat, $to_task_long&zoom=12&size=400x400&key=AIzaSyBSxVtjLOies98ZJpTmN4QvkJ3PZlkpkHA'>
+</td></tr>
 </table>
 </center>
 <center><img src=\"cid:".$image_content_id."\"></center>".
